@@ -10,7 +10,7 @@ import * as Vue from "vue/dist/vue.esm-bundler.js"  // build script
 // />
 
 const Num = {  // use a prop to pass down the greeting by using an attr in the template -> <hello greeting="Hello!"/>
-    props: ['number'],  // props are accessible through 'this'
+    props: ['number'],  // props are accessible through 'this' -> can also be defined in an object
     template: `
     <button
     v-bind:class="getClass(number)"
