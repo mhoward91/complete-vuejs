@@ -1,5 +1,5 @@
 <template>
-<button>Like</button>
+<button @click="click">Like</button>
 {{ post.likes }}
 <hashtag
   v-for="hashtag in post.hashtags"
@@ -10,6 +10,7 @@
 
 <script>
 import Hashtag from './Hashtag.vue'
+import { store } from './store';
 
 export default {
     components: { Hashtag },
@@ -21,9 +22,17 @@ export default {
         }
     },
 
-    setup(props) {  // with composition api, props are accessibile through the first argument to setup
+    setup(props) {
+        const click = () => {
+            store.incrementLike(props.post)
+        }
+
+        return {
+            click,
+        }
     }
 }
+
 </script>
 
 <style scoped>
