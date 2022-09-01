@@ -1,7 +1,7 @@
 <template>
 <layout>
     <template v-slot:header>
-        Header
+        {{ selectedAlbum }}
     </template>
 
     <template v-slot:sidebar>
@@ -37,6 +37,12 @@ export default {
             store.dispatch('albums/fetch')
         })
 
+        const selectedAlbum = computed(() => {
+            if (!store.state.photos.albumId) {
+                return 'Select an album below'
+            }
+            return `You're viewing album #${store.state.photos.albumId}`
+        })
         const albums = computed(() => {
             return store.state.albums.all
         })
@@ -48,6 +54,7 @@ export default {
         return {
             albums,
             photos,
+            selectedAlbum
         }
     }
 }

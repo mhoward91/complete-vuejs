@@ -3,6 +3,7 @@ export const photos = {
 
     state() {
         return {
+            albumId: null,
             all: [],
             cache: {}
         }
@@ -11,7 +12,10 @@ export const photos = {
     mutations: {
         setPhotosForCurrentAlbum(state, { photos, albumId } ) {
             state.all = photos
-            state.cache[albumId] = photos 
+            state.cache[albumId] = photos
+            state.albumId = albumId
+            console.log(albumId)
+
         }
     }, 
 
